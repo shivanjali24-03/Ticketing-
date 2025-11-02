@@ -1,13 +1,98 @@
-body {
+html, body, #root {
+  height: 100%;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  background-color: #1e1e2f !important;
+  color: white;
+}
+/* ===========================
+   🌟 Global Typography Setup
+   =========================== */
+
+:root {
+  --font-family: 'Poppins', sans-serif;
+  --text-color: #ffffff;
+  --heading-color: #ffffff;
+  --link-color: #9b5de5;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* Apply base font to everything */
+html, body {
+  font-family: var(--font-family);
+  color: var(--text-color);
+  background-color: #1e1e2f;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Ensure all elements inherit font and box model */
+*, *::before, *::after {
+  font-family: inherit;
+  box-sizing: inherit;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family);
+  color: var(--heading-color);
+  margin: 0 0 0.5em;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+/* Specific heading sizes */
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.75rem; }
+h4 { font-size: 1.5rem; }
+h5 { font-size: 1.25rem; }
+h6 { font-size: 1rem; }
+
+/* Paragraphs */
+p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0 0 1em;
+  color: var(--text-color);
+}
+
+/* Links */
+a {
+  color: var(--link-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #d8b4fe;
+  text-decoration: underline;
+}
+
+/* Lists */
+ul, ol {
+  margin: 0 0 1em 1.5em;
+  padding: 0;
+  color: var(--text-color);
+}
+
+li {
+  line-height: 1.6;
+}
+
+/* Buttons */
+button {
+  font-family: var(--font-family);
+  cursor: pointer;
+}
+
+/* Inputs & Forms */
+input, textarea, select {
+  font-family: var(--font-family);
+  font-size: 1rem;
+}
+
+/* Optional: Add smooth text rendering */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }

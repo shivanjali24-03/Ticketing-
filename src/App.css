@@ -1,38 +1,393 @@
-.App {
+/* ================== MAIN LAYOUT FIX ================== */
+.main-content {
+  transition: margin-left 0.3s ease;
+  padding: 20px;
+}
+
+/* When sidebar is collapsed (70px wide) */
+.main-content.collapsed {
+  margin-left: 70px;
+}
+
+/* When sidebar is expanded (230px wide) */
+.main-content.expanded {
+  margin-left: 230px;
+}
+
+/* Make sure sidebar stays fixed and main content scrolls separately */
+body {
+  margin: 0;
+  overflow-x: hidden;
+}
+
+.header {
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  color: var(--text-color); /* apply white text globally to header */
+}
+
+/* Hamburger button styling */
+.hamburger {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-color);  /* white icon */
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+/* Hover effect */
+.hamburger:hover {
+  transform: scale(1.1);
+  color: #e9ddff;
+}
+
+.hamburger i {
+  line-height: 1;
+}
+
+/* Sidebar css*/
+/* Sidebar container */
+.sidebar {
+  position: fixed;
+  top: 50%;
+  left: 1%;
+  transform: translateY(-50%);
+  width: 70px;                    /* initial compact width */
+  height: 70vh;
+  background-color: #1f86f7;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+  transition: width 0.3s ease, background 0.3s ease, padding 0.3s ease;
+  overflow: hidden;               /* hides text when collapsed */
+  z-index: 1000;
+  padding-top:20px;
+   transition: width 0.3s ease;
+  scrollbar-width: thin;        /* for Firefox */
+  scrollbar-color: #6c63ff #1e1e2d; /* scrollbar thumb + track color */
+   
+}
+/* Chrome / Edge scrollbar styling */
+.sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+.sidebar::-webkit-scrollbar-thumb {
+  background-color: #6c63ff;
+  border-radius: 10px;
+}
+.sidebar::-webkit-scrollbar-track {
+  background-color: #1e1e2d;
+}
+
+/* Menu list */
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  height: 100%;
+}
+
+/* Each menu item */
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 12px 20px;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.menu-item i {
+  font-size: 22px;
+  min-width: 30px; /* keeps icons aligned when text appears */
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Hide text by default */
+.menu-item span {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+
+
+/* Optional collapsed state (for later toggle) */
+.sidebar.collapsed {
+  width: 80px;
+  overflow-y: hidden;     
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.sidebar.collapsed .menu-item span,
+.sidebar.collapsed .sidebar-logo span {
+  display: none;
+}
+
+.sidebar.collapsed .menu-item {
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+.sidebar-logo {
+   display: flex;
+   align-items: center;
+   gap: 10px;
+   padding: 15px 20px;
+   margin-bottom: 20px;
+   font-size: 1.2rem;
+   font-weight: 600;
+   color: #fff;
+   white-space: nowrap;
+   transition: all 0.3s ease;
+ }
+
+ .sidebar-logo i {
+   font-size: 26px;
+   color: #fff;
+ }
+
+ .sidebar-logo span {
+   opacity: 0;
+   visibility: hidden;
+  transition: opacity 0.3s ease;
+ }
+
+
+/* Expand sidebar temporarily on hover */
+.sidebar:hover {
+  width: 230px;
+}
+
+/* When hovered, show text (logo + menu) */
+.sidebar:hover .sidebar-logo span,
+.sidebar:hover .menu-item span {
+  opacity: 1;
+  visibility: visible;
+}
+.sidebar.collapsed { width: 70px; }   /* icons only */
+.sidebar.expanded { width: 230px; }   /* icons + text */
+.sidebar.collapsed { width: 70px; }   /* icons only */
+.sidebar.expanded { width: 230px; 
+   overflow-y: auto;      
+}   /* icons + text */
+.sidebar.collapsed span { opacity: 0; visibility: hidden; }
+.sidebar.expanded span { opacity: 1; visibility: visible; }
+/* ---------- Hover must override collapsed state ---------- */
+/* Expand when hovered (general) */
+.sidebar:hover,
+.sidebar.collapsed:hover,
+.sidebar.expanded:hover {
+  width: 230px;
+  background-color: #27293d;
+}
+
+/* Show text on hover even if collapsed */
+.sidebar:hover .sidebar-logo span,
+.sidebar.collapsed:hover .sidebar-logo span,
+.sidebar:hover .menu-item span,
+.sidebar.collapsed:hover .menu-item span {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+}
+
+/* If you keep using .collapsed/.expanded classes, keep their widths but don't use !important */
+.sidebar.collapsed { width: 70px; }
+.sidebar.expanded  { width: 230px; }
+
+/* Make collapsed->hover visual consistent (centering icons) */
+.sidebar.collapsed .menu-item {
+  justify-content: center;
+  padding: 10px 0;
+}
+.sidebar.collapsed .sidebar-logo {
+  justify-content: center;
+}
+
+/* Ensure spans are hidden by default via opacity (not display:none) */
+.sidebar.collapsed .menu-item span,
+.sidebar.collapsed .sidebar-logo span {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-6px);
+  transition: opacity 0.24s ease, transform 0.24s ease, visibility 0.24s;
+}
+
+/* Hover transition smoothing */
+.sidebar:hover,
+.sidebar.collapsed:hover {
+  transition: width 0.28s ease, background-color 0.28s ease;
+}
+/* ---------- Submenu Styles ---------- */
+.has-submenu {
+  position: relative;
+  flex-direction: column;
+}
+
+.has-submenu .submenu {
+  /* background: rgba(255, 255, 255, 0.1);
+  border-left: 2px solid #fff; 
+  border-radius: 6px;
+  padding: 5px 0;
+  margin-left: 10px;*/
+  transition: all 0.3s ease;
+}
+
+.submenu-item {
+  padding: 8px 20px;
+  font-size: 0.9rem;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.submenu-item:hover {
+  /* background: rgba(255, 255, 255, 0.2); */
+}
+
+/* Rotate the arrow icon smoothly */
+.has-submenu i.bx-chevron-down,
+.has-submenu i.bx-chevron-up {
+  transition: transform 0.3s ease;
+}
+
+.has-submenu.open i.bx-chevron-up {
+  transform: rotate(180deg);
+}
+
+/* Prevent hover from expanding submenu accidentally when collapsed */
+.sidebar.collapsed .submenu {
+  display: none !important;
+}
+/* --- FIX submenu alignment with other menu items --- */
+/* ---------------- PERFECT ALIGNMENT FIX FOR SUBMENU ---------------- */
+
+/* Make submenu parent behave exactly like other menu items */
+.menu-item.has-submenu {
+  display: flex;
+  align-items: center;
+  padding: 0; /* remove double padding */
+}
+
+/* Inner clickable link area */
+.menu-item.has-submenu .menu-link {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 15px;
+  width: 100%;
+  padding: 12px 20px; /* identical to .menu-item */
+  color: inherit;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Icon alignment same as others */
+.menu-item.has-submenu .menu-link i {
+  font-size: 22px;
+  min-width: 30px; /* ensures icon column width matches other items */
+  text-align: center;
+}
+
+/* Dropdown arrow setup */
+.menu-item.has-submenu .dropdown-arrow {
+  margin-left: auto;
+  font-size: 16px;
+  color: #fff;
+  opacity: 0;
+  visibility: hidden;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Show dropdown arrow when expanded */
+.sidebar.expanded .menu-item.has-submenu .dropdown-arrow {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Align everything horizontally when expanded */
+.sidebar.expanded .menu-item.has-submenu .menu-link {
+  justify-content: flex-start;
+}
+
+/* When collapsed, center the icon like other items */
+.sidebar.collapsed .menu-item.has-submenu .menu-link {
+  justify-content: center;
+  padding: 10px 0;
+}
+
+/* Keep submenu text aligned with other menu items */
+.sidebar.expanded .menu-item.has-submenu .menu-link span {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Dropdown arrow rotate on open */
+.menu-item.has-submenu.open .dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+/* Submenu container */
+.submenu {
+  /* background: rgba(255, 255, 255, 0.1);
+  border-left: 2px solid #fff;
+  border-radius: 6px;
+  padding: 5px 0; */
+  margin-left: 10px;
+  transition: all 0.3s ease;
+}
+.main-content {
+  margin-left: 100px;  /* collapsed sidebar width */
+ 
+  transition: margin-left 0.3s ease;
+ 
+  min-height: calc(100vh - 60px);
+  padding: 20px;
   color: white;
+  overflow-y: auto;
 }
 
-.App-link {
-  color: #61dafb;
+.main-content.sidebar-expanded {
+  margin-left: 270px; /* expanded sidebar width */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* ================== CONTENT AREA ================== */
+
+/* This is the main section under header */
+.page-content {
+  
+  margin-left: 70px; /* when sidebar is collapsed */
+  transition: margin-left 0.3s ease;
+  min-height: calc(100vh - 70px);
+  /* background-color: #f8f9fa; */
+  color: #000;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+/* When sidebar expands */
+.page-content.sidebar-expanded {
+  margin-left: 270px;
+}
+
+/* Smooth scrolling look */
+.page-content::-webkit-scrollbar {
+  width: 8px;
+}
+.page-content::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 10px;
 }
