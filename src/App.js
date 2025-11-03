@@ -10,6 +10,9 @@ import Profile from "./pages/Profile";
 import Forms from "./pages/Forms";
 import Settings from "./pages/Settings";
 import Logout from "./pages/Logout";
+import AddAccount from "./pages/AddAccount";
+import UserList from "./pages/UserList";  
+import ManageRoles from "./pages/ManageRoles";  
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -37,6 +40,9 @@ function App() {
               <Route path="/forms" element={<Forms />} />
               <Route path="/settings" element={<Settings />} />
               <Route path="/logout" element={<Logout />} />
+              <Route path="/addAccount" element={<AddAccount />} />
+              <Route path="/userlist" element={<UserList />} />
+              <Route path="/manageroles" element={<ManageRoles />} />
             </Routes>
           </main>
         </div>

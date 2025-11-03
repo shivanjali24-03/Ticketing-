@@ -16,6 +16,7 @@ function Sidebar({ isOpen }) {
       icon: "bx bx-user",
       submenu: [
         { name: "Account", path: "/account" },
+         { name: "Add Account", path: "/addAccount" },
         { name: "Privacy", path: "/privacy" },
         { name: "Notifications", path: "/notifications" },
       ],
