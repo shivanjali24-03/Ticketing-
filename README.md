@@ -1,70 +1,60 @@
-# Getting Started with Create React App
+<div align="center">
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# 🎫 Ticketing Admin Dashboard
 
-## Available Scripts
+**A multi-page admin panel for managing users, roles and accounts, built with React.**
 
-In the project directory, you can run:
+![React](https://img.shields.io/badge/React_19-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![React Router](https://img.shields.io/badge/React_Router_7-CA4245?style=for-the-badge&logo=reactrouter&logoColor=white)
+![Bootstrap](https://img.shields.io/badge/Bootstrap_5-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white)
 
-### `npm start`
+</div>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## What it does
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+This is the admin side of a ticketing system, where staff manage the people who use it. It has a sidebar and header layout with these pages:
 
-### `npm test`
+| Page | Route | Purpose |
+|---|---|---|
+| Dashboard | `/` | Overview home screen |
+| User List | `/userlist` | See all users |
+| Manage Roles | `/manageroles` | Control who can do what |
+| Add Account | `/addAccount` | Create a new user account |
+| Account | `/account` | Account details |
+| Profile | `/profile` | The logged-in user's profile |
+| Forms / Tables | `/forms`, `/tables` | Reusable form and table layouts |
+| Settings | `/settings` | App settings |
+| Logout | `/logout` | Sign out |
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## What it shows
 
-### `npm run build`
+- **Client-side routing** with React Router 7: fast page changes with no full reloads
+- **Reusable components**: `Sidebar`, `Header`, `UserNav` and `UserActions` are shared across pages
+- **Responsive layout** with Bootstrap 5, with icons from Lucide, React Icons and Boxicons
+- A clear folder structure that separates `components/` and `pages/`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+src/
+├── components/   # Sidebar, Header, UserNav, UserActions
+└── pages/        # Dashboard, UserList, ManageRoles, Account, ...
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Run it locally
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+npm install
+npm start         # opens on http://localhost:3000
+```
 
-### `npm run eject`
+Other scripts: `npm test` and `npm run build`.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Roadmap
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- [ ] Connect to a Node.js + MongoDB backend
+- [ ] Login with role-based access
+- [ ] Ticket create, assign and close flow
+- [ ] Live demo
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Built by [@shivanjali24-03](https://github.com/shivanjali24-03)
