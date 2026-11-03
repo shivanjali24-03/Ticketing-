@@ -8,6 +8,8 @@
 ![React Router](https://img.shields.io/badge/React_Router_7-CA4245?style=for-the-badge&logo=reactrouter&logoColor=white)
 ![Bootstrap](https://img.shields.io/badge/Bootstrap_5-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white)
 
+![License: MIT](https://img.shields.io/badge/License-MIT-a855f7?style=for-the-badge)
+
 </div>
 
 ## What it does
@@ -54,6 +56,10 @@ Other scripts: `npm test` and `npm run build`.
 - [ ] Login with role-based access
 - [ ] Ticket create, assign and close flow
 - [ ] Live demo
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
 
 ---
 
